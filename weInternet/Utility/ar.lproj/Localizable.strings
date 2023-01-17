@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  weInternet
+
+  Created by ahmed.fouadgomaa on 3/27/19.
+  Copyright © 2019 ahmedfouad. All rights reserved.
+*/
+
+"governorate" = "المحافظة";
+"serviceProvider" = "نوع مقدمي الخدمة";
+"speciality" = "التخصص";
+"city" = "المدينة / المنطقة";
+"filter" = "البحث";
+"go" = "اذهب";
+"reset" = "إعادة تنقية";
+"search" = "البحث";

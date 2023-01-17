@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  weInternet
+
+  Created by ahmed.fouadgomaa on 3/27/19.
+  Copyright © 2019 ahmedfouad. All rights reserved.
+*/
+
+"governorate" = "Governorate";
+"serviceProvider" = "Service provider";
+"speciality" = "Speciality";
+"city" = "City";
+"filter" = "Filter";
+"go" = "Go";
+"reset" = "Reset";
+"search" = "Search";
