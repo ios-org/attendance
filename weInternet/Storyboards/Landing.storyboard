@@ -515,6 +515,66 @@
             </objects>
             <point key="canvasLocation" x="755" y="109"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="5vk-DX-MMd">
+            <objects>
+                <viewController id="OVM-6T-OPc" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pgY-Fb-V6y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIT-ir-cOa">
+                                <rect key="frame" x="75" y="94" width="120" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="A2f-OI-ZVW"/>
+                                    <constraint firstAttribute="width" constant="120" id="QhI-3x-COM"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Check in">
+                                    <color key="titleColor" red="0.99215686270000003" green="0.99215686270000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1S-cI-PBD">
+                                <rect key="frame" x="211" y="94" width="120" height="50"/>
+                                <color key="backgroundColor" red="0.91764705879999997" green="0.2470588235" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="ZjB-d5-MLW"/>
+                                    <constraint firstAttribute="height" constant="50" id="iBf-1N-EKI"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Check out">
+                                    <color key="titleColor" red="0.99215686270000003" green="0.99215686270000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1Cp-GI-gpn">
+                                <rect key="frame" x="8" y="164" width="398" height="690"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="OVM-6T-OPc" id="Mef-Yk-Tsc"/>
+                                    <outlet property="delegate" destination="OVM-6T-OPc" id="18W-ml-X2v"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2d4-oh-p6C"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qIT-ir-cOa" firstAttribute="top" secondItem="2d4-oh-p6C" secondAttribute="top" constant="50" id="2AR-K3-cm1"/>
+                            <constraint firstItem="1Cp-GI-gpn" firstAttribute="leading" secondItem="2d4-oh-p6C" secondAttribute="leading" constant="8" id="3ea-3A-l1X"/>
+                            <constraint firstItem="2d4-oh-p6C" firstAttribute="bottom" secondItem="1Cp-GI-gpn" secondAttribute="bottom" constant="8" id="4IU-49-D4j"/>
+                            <constraint firstItem="2d4-oh-p6C" firstAttribute="trailing" secondItem="1Cp-GI-gpn" secondAttribute="trailing" constant="8" id="5UX-Df-sEH"/>
+                            <constraint firstItem="1Cp-GI-gpn" firstAttribute="centerX" secondItem="2d4-oh-p6C" secondAttribute="centerX" id="CNg-G5-Y8q"/>
+                            <constraint firstItem="qIT-ir-cOa" firstAttribute="leading" secondItem="2d4-oh-p6C" secondAttribute="leading" constant="75" id="Eqo-eL-NoE"/>
+                            <constraint firstItem="E1S-cI-PBD" firstAttribute="centerY" secondItem="qIT-ir-cOa" secondAttribute="centerY" id="Wci-vG-CMI"/>
+                            <constraint firstItem="E1S-cI-PBD" firstAttribute="leading" secondItem="qIT-ir-cOa" secondAttribute="trailing" constant="16" id="rVG-gC-GEk"/>
+                            <constraint firstItem="1Cp-GI-gpn" firstAttribute="top" secondItem="qIT-ir-cOa" secondAttribute="bottom" constant="20" id="z8c-2d-Q3V"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dT4-sQ-tK8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2346.376811594203" y="533.70535714285711"/>
+        </scene>
         <!--Login2VC-->
         <scene sceneID="XSp-aG-qRY">
             <objects>
@@ -726,6 +786,9 @@
         <image name="notificationIcon-1" width="21.333333969116211" height="21.666666030883789"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
