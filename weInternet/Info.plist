@@ -4,7 +4,8 @@
 <dict>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
-		<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+		<string>com.te.teamcare</string>
+		<string>com.te.teamcare.RichNotificationService</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
@@ -47,13 +48,6 @@
 		<string>DroidKufi-Bold.ttf</string>
 		<string>AvantGardeITCbyBT-Book.ttf</string>
 	</array>
-    
-    <key>BGTaskSchedulerPermittedIdentifiers</key>
-    <array>
-        <string>com.te.teamcare</string>
-        <string>com.te.teamcare.RichNotificationService</string>
-    </array>
-    
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
@@ -63,7 +57,7 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>CustomLaunch</string>
+	<string>Landing</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
