@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1856D7CF2976AA5000A2A0FB /* LaunchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856D7CE2976AA5000A2A0FB /* LaunchVC.swift */; };
 		186F0FF126CD318500BB39DB /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186F0FF026CD318500BB39DB /* NotificationService.swift */; };
 		186F0FF526CD318500BB39DB /* RichNotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 186F0FEE26CD318500BB39DB /* RichNotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		188DC15126DBBB200054397B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188DC15026DBBB200054397B /* WebKit.framework */; };
@@ -108,6 +109,7 @@
 		183D916526CE880300E6D38F /* RichNotificationService */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RichNotificationService; sourceTree = "<group>"; };
 		183D916626CE880E00E6D38F /* FirebaseMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		183D921126CEEEAE00E6D38F /* FirebaseMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1856D7CE2976AA5000A2A0FB /* LaunchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchVC.swift; sourceTree = "<group>"; };
 		186F0FEE26CD318500BB39DB /* RichNotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RichNotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		186F0FF026CD318500BB39DB /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		186F0FF226CD318500BB39DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -211,6 +213,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1856D7CD2976AA3700A2A0FB /* LaunchVC */ = {
+			isa = PBXGroup;
+			children = (
+				1856D7CE2976AA5000A2A0FB /* LaunchVC.swift */,
+			);
+			path = LaunchVC;
+			sourceTree = "<group>";
+		};
 		186F0FEF26CD318500BB39DB /* RichNotificationService */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +308,7 @@
 		449770B5261DD50900B4A461 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				1856D7CD2976AA3700A2A0FB /* LaunchVC */,
 				449770E5261DD50900B4A461 /* Login */,
 				449770EC261DD50900B4A461 /* Landing */,
 			);
@@ -714,6 +725,7 @@
 				440FCAEE23AA3E9300E78C64 /* WSConstants.swift in Sources */,
 				4482C5E826E7876E0024422A /* WKDownloadHelper+delegate.swift in Sources */,
 				440FCAF823AA3E9300E78C64 /* String_Extension.swift in Sources */,
+				1856D7CF2976AA5000A2A0FB /* LaunchVC.swift in Sources */,
 				4497717E261DD7CD00B4A461 /* AppDelegate.swift in Sources */,
 				440FCA1B23AA3A0D00E78C64 /* weInternet.xcdatamodeld in Sources */,
 				4497711A261DD50900B4A461 /* LoginInteractor.swift in Sources */,

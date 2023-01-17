@@ -10,7 +10,7 @@ import UIKit
 
 class DashBoardVC: UIViewController {
     var isUpToDate: Bool?
-    var versionCheckerPresenter: VersionCheckPresenter?
+  //  var versionCheckerPresenter: VersionCheckPresenter?
 
     @IBOutlet weak var btnNotification: UIButton!
     @IBOutlet weak var viewContainer1: UIView!{
@@ -101,9 +101,9 @@ class DashBoardVC: UIViewController {
     }
     
     @IBAction func btnNotificationClicked(_ sender: Any) {
-        let myStoryBoard = UIStoryboard(name: "Doctor", bundle: nil)
-        let notificationVC = myStoryBoard.instantiateViewController(withIdentifier: "NotificationViewController" ) as! NotificationViewController
-        self.present(notificationVC, animated: true, completion: nil)
+//        let myStoryBoard = UIStoryboard(name: "Doctor", bundle: nil)
+//        let notificationVC = myStoryBoard.instantiateViewController(withIdentifier: "NotificationViewController" ) as! NotificationViewController
+//        self.present(notificationVC, animated: true, completion: nil)
     }
     
     func navigate(recognizer: UIView)  {

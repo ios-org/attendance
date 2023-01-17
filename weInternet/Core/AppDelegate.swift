@@ -16,7 +16,7 @@ import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
-    var versionCheckerPresenter: VersionCheckPresenter?
+  //  var versionCheckerPresenter: VersionCheckPresenter?
     var window: UIWindow?
     private var launchVC: LaunchVC?
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if(savedFCMToken != fcmToken){
             AppUserDefaults.setUserDefaultValue(value: fcmToken, key: Constants.fcmToken)
         }
-        checkUserLogin()
+      //  checkUserLogin()
         
         
         
@@ -140,7 +140,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         //setDefaultRootVC()
         print(AppUserDefaults.getUserDefaultValueForKey(key: Constants.skipLandingKey))
         
-        versionCheckerPresenter = VersionCheckPresenter(versionCheckView: self)
+     //   versionCheckerPresenter = VersionCheckPresenter(versionCheckView: self)
         if let option = launchOptions {
             
             
@@ -148,7 +148,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 let info = option[UIApplication.LaunchOptionsKey.remoteNotification]
                 if (info != nil) {
                     
-                   didTapNotification()
+              //     didTapNotification()
                 }
             
             
@@ -236,7 +236,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         //        // Print full message.
         //        print(userInfo)
         
-        didTapNotification()
+     //   didTapNotification()
         
         //below three lines to remove other notifications from Notification Center after just any one clicked
         let center = UNUserNotificationCenter.current()
@@ -337,73 +337,73 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
         }
     }
-    func didTapNotification(){
-        let token = KeychainService.loadPassword(service: Constants.service1, account: Constants.account)
-        if(token == nil){
-            let storyBoard : UIStoryboard = UIStoryboard(name:  Constants.StoryBoardFile.Landing, bundle:nil)
-            let login2VC  = storyBoard.instantiateViewController(withIdentifier: Constants.StoryBoardIdentifier.login2VC) as! Login2VC
-            self.window?.rootViewController = login2VC
-            self.window?.makeKeyAndVisible()
-        }else{
-            guard let userId = KeychainService.loadPassword(service: Constants.userId, account: Constants.account) else{
-                let storyBoard : UIStoryboard = UIStoryboard(name:  Constants.StoryBoardFile.Main, bundle:nil)
-                if  let dashNC = storyBoard.instantiateViewController(withIdentifier: "dashNC") as? UINavigationController {
-                    let storyBoardD: UIStoryboard = UIStoryboard(name: "Doctor", bundle: nil)
-                    let homeViewController = storyBoardD.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
-                    dashNC.pushViewController(homeViewController, animated: false)
-                    setDefaultRootVC(vc: dashNC)
-
-                    
-                }
-                
-                return
-            }
-                
-                if("\(userId)" == "3"){
-                    Constants.medNetworkNo = 2
-                    let storyBoard : UIStoryboard = UIStoryboard(name:  Constants.StoryBoardFile.Home
-                        , bundle:nil)
-                    let medicalTEORGlobeVC: MedicalTEORGlobeVC? = storyBoard.instantiateViewController(withIdentifier: "MedicalTEORGlobeVC") as? MedicalTEORGlobeVC
-                    let myNavigationController = UINavigationController(rootViewController: medicalTEORGlobeVC!)
-                    myNavigationController.navigationBar.isHidden = true
-                    setDefaultRootVC(vc: myNavigationController)
-
-                }
-        }
-    }
-    func checkUserLogin() {
-//       logoutFromApp()
-        
-        let token = KeychainService.loadPassword(service: Constants.service1, account: Constants.account)
-        if(token == nil){
-            let storyBoard : UIStoryboard = UIStoryboard(name:  Constants.StoryBoardFile.Landing, bundle:nil)
-            let login2VC  = storyBoard.instantiateViewController(withIdentifier: Constants.StoryBoardIdentifier.login2VC) as! Login2VC
-            setDefaultRootVC(vc: login2VC)
-
-        }else{
-            guard let userId = KeychainService.loadPassword(service: Constants.userId, account: Constants.account) else{
-                let storyBoard : UIStoryboard = UIStoryboard(name:  Constants.StoryBoardFile.Main, bundle:nil)
-                if  let dashNC = storyBoard.instantiateViewController(withIdentifier: "dashNC") as? UINavigationController {
-                    setDefaultRootVC(vc: dashNC)
-//                    self.window?.rootViewController = dashNC
-//                    self.window?.makeKeyAndVisible()
-                    
-                }
-                
-                return
-            }
-                
-                if("\(userId)" == "3"){
-                    Constants.medNetworkNo = 2
-                    let storyBoard : UIStoryboard = UIStoryboard(name:  Constants.StoryBoardFile.Home
-                        , bundle:nil)
-                    let medicalTEORGlobeVC: MedicalTEORGlobeVC? = storyBoard.instantiateViewController(withIdentifier: "MedicalTEORGlobeVC") as? MedicalTEORGlobeVC
-                    let myNavigationController = UINavigationController(rootViewController: medicalTEORGlobeVC!)
-                    myNavigationController.navigationBar.isHidden = true
-                    setDefaultRootVC(vc: myNavigationController)
-
-                }
-        }
+//    func didTapNotification(){
+//        let token = KeychainService.loadPassword(service: Constants.service1, account: Constants.account)
+//        if(token == nil){
+//            let storyBoard : UIStoryboard = UIStoryboard(name:  Constants.StoryBoardFile.Landing, bundle:nil)
+//            let login2VC  = storyBoard.instantiateViewController(withIdentifier: Constants.StoryBoardIdentifier.login2VC) as! Login2VC
+//            self.window?.rootViewController = login2VC
+//            self.window?.makeKeyAndVisible()
+//        }else{
+//            guard let userId = KeychainService.loadPassword(service: Constants.userId, account: Constants.account) else{
+//                let storyBoard : UIStoryboard = UIStoryboard(name:  Constants.StoryBoardFile.Main, bundle:nil)
+//                if  let dashNC = storyBoard.instantiateViewController(withIdentifier: "dashNC") as? UINavigationController {
+//                    let storyBoardD: UIStoryboard = UIStoryboard(name: "Doctor", bundle: nil)
+//                    let homeViewController = storyBoardD.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+//                    dashNC.pushViewController(homeViewController, animated: false)
+//                    setDefaultRootVC(vc: dashNC)
+//
+//
+//                }
+//
+//                return
+//            }
+//
+//                if("\(userId)" == "3"){
+//                    Constants.medNetworkNo = 2
+//                    let storyBoard : UIStoryboard = UIStoryboard(name:  Constants.StoryBoardFile.Home
+//                        , bundle:nil)
+//                    let medicalTEORGlobeVC: MedicalTEORGlobeVC? = storyBoard.instantiateViewController(withIdentifier: "MedicalTEORGlobeVC") as? MedicalTEORGlobeVC
+//                    let myNavigationController = UINavigationController(rootViewController: medicalTEORGlobeVC!)
+//                    myNavigationController.navigationBar.isHidden = true
+//                    setDefaultRootVC(vc: myNavigationController)
+//
+//                }
+//        }
+//    }
+//    func checkUserLogin() {
+////       logoutFromApp()
+//
+//        let token = KeychainService.loadPassword(service: Constants.service1, account: Constants.account)
+//        if(token == nil){
+//            let storyBoard : UIStoryboard = UIStoryboard(name:  Constants.StoryBoardFile.Landing, bundle:nil)
+//            let login2VC  = storyBoard.instantiateViewController(withIdentifier: Constants.StoryBoardIdentifier.login2VC) as! Login2VC
+//            setDefaultRootVC(vc: login2VC)
+//
+//        }else{
+//            guard let userId = KeychainService.loadPassword(service: Constants.userId, account: Constants.account) else{
+//                let storyBoard : UIStoryboard = UIStoryboard(name:  Constants.StoryBoardFile.Main, bundle:nil)
+//                if  let dashNC = storyBoard.instantiateViewController(withIdentifier: "dashNC") as? UINavigationController {
+//                    setDefaultRootVC(vc: dashNC)
+////                    self.window?.rootViewController = dashNC
+////                    self.window?.makeKeyAndVisible()
+//
+//                }
+//
+//                return
+//            }
+//
+//                if("\(userId)" == "3"){
+//                    Constants.medNetworkNo = 2
+//                    let storyBoard : UIStoryboard = UIStoryboard(name:  Constants.StoryBoardFile.Home
+//                        , bundle:nil)
+//                    let medicalTEORGlobeVC: MedicalTEORGlobeVC? = storyBoard.instantiateViewController(withIdentifier: "MedicalTEORGlobeVC") as? MedicalTEORGlobeVC
+//                    let myNavigationController = UINavigationController(rootViewController: medicalTEORGlobeVC!)
+//                    myNavigationController.navigationBar.isHidden = true
+//                    setDefaultRootVC(vc: myNavigationController)
+//
+//                }
+//        }
         
         
         
@@ -454,41 +454,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //            }
 //
 //        }
-    }
+   // }
 }
 
 
 
 
 
-extension AppDelegate: VersionCheckView {
-    func getReachability(isConnected: Bool) {
-        
-    }
-    
-    func getAppVersionSupportFailure() {
-        
-    }
-    
-    
-    func getAppVersionSupportStatus(shouldUpdate: Bool) {
-        if shouldUpdate {
-            //            CachedDataSource.shared.isUpToDate = false
-            window?.makeKeyAndVisible()
-            //            window = UIWindow(frame: UIScreen.main.bounds)
-            
-            //            let currentVC = window?.rootViewController?.children[window!.rootViewController!.children.count - 1]
-            //            print(window?.rootViewController?.children[window!.rootViewController!.children.count - 1].description)
-            let alert = UIAlertController(title: "برجاء تحديث التطبيق ", message: "", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-                self.versionCheckerPresenter?.goToAppStore()
-            }))
-            window?.rootViewController?.present(alert, animated: true, completion: nil)
-            
-            
-        }
-    }
-}
+//extension AppDelegate: VersionCheckView {
+//    func getReachability(isConnected: Bool) {
+//
+//    }
+//
+//    func getAppVersionSupportFailure() {
+//
+//    }
+//
+//
+//    func getAppVersionSupportStatus(shouldUpdate: Bool) {
+//        if shouldUpdate {
+//            //            CachedDataSource.shared.isUpToDate = false
+//            window?.makeKeyAndVisible()
+//            //            window = UIWindow(frame: UIScreen.main.bounds)
+//
+//            //            let currentVC = window?.rootViewController?.children[window!.rootViewController!.children.count - 1]
+//            //            print(window?.rootViewController?.children[window!.rootViewController!.children.count - 1].description)
+//            let alert = UIAlertController(title: "برجاء تحديث التطبيق ", message: "", preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+//                self.versionCheckerPresenter?.goToAppStore()
+//            }))
+//            window?.rootViewController?.present(alert, animated: true, completion: nil)
+//
+//
+//        }
+//    }
+//}
 
 extension AppDelegate {
     private func checkForJailbreak() {
