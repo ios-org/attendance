@@ -21,24 +21,48 @@ struct Provider {
                                       parameterEncoding: ParameterEncoding = JSONEncoding.default,
                                       vaildationRange: Range<Int> = 200..<300,
                                       completion: @escaping (_ response: Data?)->()){
-        
-        Alamofire.request(url,
-                          method: method,
-                          encoding: parameterEncoding
-                          )
+        if method == .post{
+            
+            Alamofire.request(url,
+                              method: method,
+                              parameters: params, encoding: parameterEncoding, headers: headers
+            )
             .validate(statusCode: vaildationRange)
+            
             .responseJSON { response in
                 print(response.response?.statusCode)
                 print(response.result)
                 switch response.result {
                 case .success:
-//                    print(response.description)
+                    //                    print(response.description)
                     completion(response.data)
                 case.failure(let error):
                     debugPrint(error.localizedDescription)
                     completion(nil)
                     
                 }
+            }
+        }else{
+            
+            Alamofire.request(url,
+                              method: method,
+                              encoding: parameterEncoding, headers: headers
+            )
+            .validate(statusCode: vaildationRange)
+            
+            .responseJSON { response in
+                print(response.response?.statusCode)
+                print(response.result)
+                switch response.result {
+                case .success:
+                    //                    print(response.description)
+                    completion(response.data)
+                case.failure(let error):
+                    debugPrint(error.localizedDescription)
+                    completion(nil)
+                    
+                }
+            }
         }
         
     }

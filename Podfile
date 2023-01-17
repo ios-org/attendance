@@ -13,6 +13,8 @@ target 'RichNotificationService' do
 
     target 'weInternet' do
       use_frameworks!
+      pod 'AlamofireNetworkActivityLogger'
+
   pod 'Alamofire', '~> 4.7'
   pod 'CZPicker'
   pod 'Reachability'

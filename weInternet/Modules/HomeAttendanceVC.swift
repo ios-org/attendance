@@ -20,11 +20,18 @@ class HomeAttendanceVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeTheLocationManager()
+        getLogs()
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        100
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "logcell", for: indexPath)
-        cell.textLabel?.text = attendanceLogs?[indexPath.row].actionTypeName
-        cell.detailTextLabel?.text = attendanceLogs?[indexPath.row].actionDate
+//        cell.textLabel?.text = (attendanceLogs?[indexPath.row].actionTypeName ?? "") + "\n" + (attendanceLogs?[indexPath.row].actionDate ?? "") ?? ""
+        
+        cell.textLabel?.numberOfLines = 0
+        let x = "\(attendanceLogs?[indexPath.row].actionTypeName ?? "") \n \(attendanceLogs?[indexPath.row].actionDate ?? "")"
+        cell.textLabel?.text = x
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -37,7 +44,7 @@ class HomeAttendanceVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         checkOut()
     }
     func checkIn(){
-        Provider().postRequest(url: "http://ec2-3-234-225-67.compute-1.amazonaws.com:8080/attendance/checkStatus", withExpectedResponseOfType: CheckInResponseData.self, headers: ["Authorization": Constants.loginToken ?? ""], parameters: ["longitude": lng, "latitude": lat, "actionTypeId": 1, "logAction": true]) { data in
+        Provider().postRequest(url: "http://ec2-3-234-225-67.compute-1.amazonaws.com:8080/attendance/checkStatus", withExpectedResponseOfType: CheckInResponseData.self, headers: ["Authorization": "Bearer " + (Constants.loginToken ?? "") ?? ""], parameters: ["longitude": lng, "latitude": lat, "actionTypeId": 1, "logAction": true]) { data in
             guard let _ = data?.body else {
                 ShowToast.ShowToast(data?.clientMessage ?? "error")
                 return
@@ -46,7 +53,7 @@ class HomeAttendanceVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     func checkOut(){
-        Provider().postRequest(url: "http://ec2-3-234-225-67.compute-1.amazonaws.com:8080/attendance/checkStatus", withExpectedResponseOfType: CheckInResponseData.self, headers: ["Authorization": Constants.loginToken ?? ""], parameters: ["longitude": lng, "latitude": lat, "actionTypeId": 2, "logAction": true]) {[weak self] data in
+        Provider().postRequest(url: "http://ec2-3-234-225-67.compute-1.amazonaws.com:8080/attendance/checkStatus", withExpectedResponseOfType: CheckInResponseData.self, headers: ["Authorization": "Bearer " + (Constants.loginToken ?? "") ?? ""], parameters: ["longitude": lng, "latitude": lat, "actionTypeId": 2, "logAction": true]) {[weak self] data in
             guard let body = data?.body else {
                 ShowToast.ShowToast(data?.clientMessage ?? "error")
                 return
@@ -55,7 +62,7 @@ class HomeAttendanceVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     func getLogs(){
-        Provider().getRequest(url: "http://ec2-3-234-225-67.compute-1.amazonaws.com:8080/attendance/employeeLogs?ActionTypeID=0&noOfRows=5", AttendanceLogsResponseData.self) {[weak self] data, _  in
+        Provider().getRequest(url: "http://ec2-3-234-225-67.compute-1.amazonaws.com:8080/attendance/employeeLogs?ActionTypeID=0&noOfRows=5", AttendanceLogsResponseData.self, headers: ["Authorization": "Bearer " + (Constants.loginToken ?? "") ?? ""]) {[weak self] data, _  in
             guard let body = data?.body else {
                 ShowToast.ShowToast(data?.clientMessage ?? "error")
                 return

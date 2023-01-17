@@ -13,7 +13,7 @@ extension Login2VC: LoginView{
     func loggedInSuccessfully(userId: Int, userType: String, token: String) {
         if(userType == "FAMILLIES" && userId == 3){
             KeychainService.savePassword(service: Constants.service1, account: Constants.account, data: token)
-        //    navigateToFamiliesHome()
+            loginSuccess()
         }else{
             loginSuccess()
         }

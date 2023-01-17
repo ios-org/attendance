@@ -22,6 +22,7 @@ class LaunchVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getSupportedVersion()
+        navigateTo()
     }
     func setNavigatationTo(vc: UIViewController){
         navigateToVC = vc
@@ -37,7 +38,10 @@ class LaunchVC: UIViewController {
             // Creates a transition animation.
             UIView.transition(with: window, duration: duration, options: options, animations: {}, completion: nil)
 //            navigateToVC?.modalPresentationStyle = .fullScreen
-            window.rootViewController = navigateToVC!
+            let storyBoard : UIStoryboard = UIStoryboard(name:  Constants.StoryBoardFile.Landing, bundle:nil)
+            if  let dashNC = storyBoard.instantiateViewController(withIdentifier: "Login2VC") as? Login2VC {
+                window.rootViewController = dashNC
+            }
 //            present(navigateToVC!, animated: true, completion: nil)
         }
     }
