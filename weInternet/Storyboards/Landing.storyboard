@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Aa-rl-tkd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="i6p-BP-YDO">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -515,10 +515,10 @@
             </objects>
             <point key="canvasLocation" x="755" y="109"/>
         </scene>
-        <!--View Controller-->
+        <!--Home AttendanceVC-->
         <scene sceneID="5vk-DX-MMd">
             <objects>
-                <viewController id="OVM-6T-OPc" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeAttendanceVC" id="OVM-6T-OPc" customClass="HomeAttendanceVC" customModule="Staff_Care" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pgY-Fb-V6y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -534,6 +534,9 @@
                                 <state key="normal" title="Check in">
                                     <color key="titleColor" red="0.99215686270000003" green="0.99215686270000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapCheckInButton:" destination="OVM-6T-OPc" eventType="touchUpInside" id="NsJ-qD-JTM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1S-cI-PBD">
                                 <rect key="frame" x="211" y="94" width="120" height="50"/>
@@ -546,10 +549,23 @@
                                 <state key="normal" title="Check out">
                                     <color key="titleColor" red="0.99215686270000003" green="0.99215686270000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapCheckOutButton:" destination="OVM-6T-OPc" eventType="touchUpInside" id="F2K-wg-K0u"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1Cp-GI-gpn">
                                 <rect key="frame" x="8" y="164" width="398" height="690"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="logcell" id="O0X-Po-sei">
+                                        <rect key="frame" x="0.0" y="50" width="398" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O0X-Po-sei" id="Yot-8q-4PO">
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="OVM-6T-OPc" id="Mef-Yk-Tsc"/>
                                     <outlet property="delegate" destination="OVM-6T-OPc" id="18W-ml-X2v"/>
@@ -570,6 +586,11 @@
                             <constraint firstItem="1Cp-GI-gpn" firstAttribute="top" secondItem="qIT-ir-cOa" secondAttribute="bottom" constant="20" id="z8c-2d-Q3V"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="checkInButton" destination="qIT-ir-cOa" id="pRc-sV-0Su"/>
+                        <outlet property="checkOutButton" destination="E1S-cI-PBD" id="agC-7W-wZc"/>
+                        <outlet property="logsTableView" destination="1Cp-GI-gpn" id="ZLm-dJ-ORQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dT4-sQ-tK8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
