@@ -136,9 +136,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         configureFirebase(application: application)
         self.checkForJailbreak()
         
-        launchVC = window?.rootViewController as? LaunchVC
+        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Landing", bundle: nil)
+        let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Login2VC")
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = initialViewControlleripad
+        self.window?.makeKeyAndVisible()
+        
+        
+        
+        //launchVC = window?.rootViewController as? LaunchVC
         //setDefaultRootVC()
-        print(AppUserDefaults.getUserDefaultValueForKey(key: Constants.skipLandingKey))
+        //print(AppUserDefaults.getUserDefaultValueForKey(key: Constants.skipLandingKey))
         
      //   versionCheckerPresenter = VersionCheckPresenter(versionCheckView: self)
         if let option = launchOptions {
