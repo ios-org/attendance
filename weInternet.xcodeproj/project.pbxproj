@@ -58,6 +58,7 @@
 		44E71B6326C072D9000C4EAA /* Swissra-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44E71B6126C072D9000C4EAA /* Swissra-Bold.ttf */; };
 		74819F4B26DE12CD0067CE0F /* te.eg.der in Resources */ = {isa = PBXBuildFile; fileRef = 74819F4A26DE12CD0067CE0F /* te.eg.der */; };
 		74FBF0EB224B611000B9C1DD /* weInternetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FBF0EA224B611000B9C1DD /* weInternetTests.swift */; };
+		B310CDF92976AA7200C1D07D /* HomeAttendanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B310CDF82976AA7200C1D07D /* HomeAttendanceVC.swift */; };
 		BC642C6427020FC200C14626 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC642C6327020FC200C14626 /* GoogleService-Info.plist */; };
 		F31FCA34E6F35B86B61AB07A /* Pods_RichNotificationService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E259154EDA7D4EE3E0DA819 /* Pods_RichNotificationService.framework */; };
 /* End PBXBuildFile section */
@@ -171,6 +172,7 @@
 		74FBF0EC224B611000B9C1DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		759429A4A35D1BD6DDC90566 /* Pods-RichNotificationService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RichNotificationService.release.xcconfig"; path = "Target Support Files/Pods-RichNotificationService/Pods-RichNotificationService.release.xcconfig"; sourceTree = "<group>"; };
 		9A94C1396B93F9DDBAA83EB7 /* Pods_RichNotificationService_weInternet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RichNotificationService_weInternet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B310CDF82976AA7200C1D07D /* HomeAttendanceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAttendanceVC.swift; sourceTree = "<group>"; };
 		BC642C6327020FC200C14626 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D91F222B9D63DBE2990C8DAA /* Pods-RichNotificationService-weInternet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RichNotificationService-weInternet.debug.xcconfig"; path = "Target Support Files/Pods-RichNotificationService-weInternet/Pods-RichNotificationService-weInternet.debug.xcconfig"; sourceTree = "<group>"; };
 		E2D787B52D9552CE06D718BF /* Pods-RichNotificationService-weInternet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RichNotificationService-weInternet.release.xcconfig"; path = "Target Support Files/Pods-RichNotificationService-weInternet/Pods-RichNotificationService-weInternet.release.xcconfig"; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 			children = (
 				449770E5261DD50900B4A461 /* Login */,
 				449770EC261DD50900B4A461 /* Landing */,
+				B310CDF82976AA7200C1D07D /* HomeAttendanceVC.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -716,6 +719,7 @@
 				440FCAF823AA3E9300E78C64 /* String_Extension.swift in Sources */,
 				4497717E261DD7CD00B4A461 /* AppDelegate.swift in Sources */,
 				440FCA1B23AA3A0D00E78C64 /* weInternet.xcdatamodeld in Sources */,
+				B310CDF92976AA7200C1D07D /* HomeAttendanceVC.swift in Sources */,
 				4497711A261DD50900B4A461 /* LoginInteractor.swift in Sources */,
 				440FCAF123AA3E9300E78C64 /* Constans.swift in Sources */,
 				4497711B261DD50900B4A461 /* PageVC.swift in Sources */,
