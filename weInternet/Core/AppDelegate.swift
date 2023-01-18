@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AlamofireNetworkActivityLogger
 
 import UserNotifications
 import FirebaseInstanceID
@@ -133,9 +134,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        configureFirebase(application: application)
+//        configureFirebase(application: application)
         self.checkForJailbreak()
-        
+        NetworkActivityLogger.shared.level = .debug
+        NetworkActivityLogger.shared.startLogging()
         let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Landing", bundle: nil)
         let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Login2VC")
         
@@ -171,7 +173,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //        }
         
         LanguageManager.sharedInstance.setLanuageAs(lan: "ar")
-        UIView.appearance().semanticContentAttribute = .forceRightToLeft
+//        UIView.appearance().semanticContentAttribute = .forceRightToLeft
         
         
         

@@ -22,6 +22,7 @@ class HomeAttendanceVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         initializeTheLocationManager()
         getLogs()
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         100
     }
@@ -30,7 +31,7 @@ class HomeAttendanceVC: UIViewController, UITableViewDelegate, UITableViewDataSo
 //        cell.textLabel?.text = (attendanceLogs?[indexPath.row].actionTypeName ?? "") + "\n" + (attendanceLogs?[indexPath.row].actionDate ?? "") ?? ""
         
         cell.textLabel?.numberOfLines = 0
-        let x = "\(attendanceLogs?[indexPath.row].actionTypeName ?? "") \n \(attendanceLogs?[indexPath.row].actionDate ?? "")"
+        let x = "\(attendanceLogs?[indexPath.row].actionTypeName ?? "") \n \(attendanceLogs?[indexPath.row].actionDate?.toDateAmPm() ?? "")"
         cell.textLabel?.text = x
         return cell
     }
@@ -106,7 +107,7 @@ struct Body: Codable {
 extension HomeAttendanceVC: CLLocationManagerDelegate{
     func initializeTheLocationManager() {
         locationManager.delegate = self
-//            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -140,16 +141,37 @@ func locationManager(_ manager: CLLocationManager, didFailWithError error: Error
 //        locationManager.requestLocation()
     locationManager.stopUpdatingLocation()
     
-    showAlert(title: "الإعدادات", message: "من فضلك قم بإتاحة الوصول لموقعك الحالي  ", preferredStyle: .alert, action: UIAlertAction(title: "متابعة", style: .default, handler: { ـ in
-        UIApplication.shared.openURL(URL(string: UIApplication.openSettingsURLString)!)
-        self.navigationController?.popViewController(animated: false)
-
-    }), completion: nil)
+//    showAlert(title: "الإعدادات", message: "من فضلك قم بإتاحة الوصول لموقعك الحالي  ", preferredStyle: .alert, action: UIAlertAction(title: "متابعة", style: .default, handler: { ـ in
+//        UIApplication.shared.openURL(URL(string: UIApplication.openSettingsURLString)!)
+//        self.navigationController?.popViewController(animated: false)
+//
+//    }), completion: nil)
 }
     /// Show an alert on the view controller.
-    func showAlert(title: String? = nil, message: String? = nil, preferredStyle: UIAlertController.Style = .alert, action: UIAlertAction, completion: (() -> Void)? = nil) {
-        showAlert(title: title, message: message, preferredStyle: preferredStyle, action: action, completion: completion)
-    }
+//    func showAlert(title: String? = nil, message: String? = nil, preferredStyle: UIAlertController.Style = .alert, action: UIAlertAction, completion: (() -> Void)? = nil) {
+//        showAlert(title: title, message: message, preferredStyle: preferredStyle, action: action, completion: completion)
+//    }
     
 }
 
+extension String{
+    func toDateAmPm(incrementHoursBy: Int = 0)->String?{
+//        guard let isoDate = toDateISO() else {return self}
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        formatter.locale = Locale(identifier: "en_eg")
+        formatter.dateStyle = .full
+//        formatter.calendar.date(byAdding: .hour, value: 2, to: toDate()!)
+        formatter.timeStyle = .medium
+        let date = formatter.string(from: formatter.calendar.date(byAdding: .hour, value: incrementHoursBy, to: toDate()!)!)
+        return date
+    }
+    
+    func toDate()-> Date?{
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        return dateFormatter.date(from: self)
+    }
+}

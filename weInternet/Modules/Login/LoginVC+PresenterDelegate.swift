@@ -55,7 +55,11 @@ extension Login2VC: LoginView{
     func loginSuccess() {
         let storyBoard : UIStoryboard = UIStoryboard(name:  Constants.StoryBoardFile.Landing, bundle:nil)
         if  let dashNC = storyBoard.instantiateViewController(withIdentifier: "HomeAttendanceVC") as? HomeAttendanceVC {
-            self.present(dashNC, animated: true)
+            guard let window = UIApplication.shared.keyWindow else {
+                return
+            }
+            window.rootViewController = dashNC
+            
         }
 //        presenter.subscribeFCMToken()
         

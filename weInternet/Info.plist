@@ -41,18 +41,23 @@
 			<string>http://weapps.te.eg</string>
 		</dict>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>location</string>
+		<string>processing</string>
+		<string>remote-notification</string>
+	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We would like to access your location</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We would like to access your location</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Swissra Normal.ttf</string>
 		<string>Swissra Bold.ttf</string>
 		<string>DroidKufi-Bold.ttf</string>
 		<string>AvantGardeITCbyBT-Book.ttf</string>
-	</array>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>fetch</string>
-		<string>processing</string>
-		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
