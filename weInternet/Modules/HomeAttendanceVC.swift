@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 class HomeAttendanceVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var employeeStatusButton: UIButton!
     @IBOutlet weak var logsTableView: UITableView!
     @IBOutlet weak var checkOutButton: UIButton!
     @IBOutlet weak var checkInButton: UIButton!
@@ -21,8 +22,12 @@ class HomeAttendanceVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.viewDidLoad()
         initializeTheLocationManager()
         getLogs()
+        
     }
     
+    @IBAction func didTapGetEmployeeStatusButton(_ sender: Any) {
+        checkStatus()
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         100
     }
@@ -45,14 +50,25 @@ class HomeAttendanceVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         checkOut()
     }
     func checkIn(){
-        Provider().postRequest(url: "http://ec2-3-234-225-67.compute-1.amazonaws.com:8080/attendance/checkStatus", withExpectedResponseOfType: CheckInResponseData.self, headers: ["Authorization": "Bearer " + (Constants.loginToken ?? "") ?? ""], parameters: ["longitude": lng, "latitude": lat, "actionTypeId": 1, "logAction": true]) { data in
-            guard let _ = data?.body else {
+        Provider().postRequest(url: "http://ec2-3-234-225-67.compute-1.amazonaws.com:8080/attendance/checkStatus", withExpectedResponseOfType: CheckInResponseData.self, headers: ["Authorization": "Bearer " + (Constants.loginToken ?? "") ], parameters: ["longitude": lng, "latitude": lat, "actionTypeId": 1, "logAction": true]) { data in
+            guard let body = data?.body else {
                 ShowToast.ShowToast(data?.clientMessage ?? "error")
                 return
             }
             ShowToast.ShowToast("checked in successfully")
         }
     }
+    func checkStatus(){
+        Provider().postRequest(url: "http://ec2-3-234-225-67.compute-1.amazonaws.com:8080/attendance/checkStatus", withExpectedResponseOfType: CheckInResponseData.self, headers: ["Authorization": "Bearer " + (Constants.loginToken ?? "") ], parameters: ["longitude": lng, "latitude": lat, "actionTypeId": 3, "logAction": true]) {[weak self] data in
+            guard let body = data?.body else {
+                ShowToast.ShowToast(data?.clientMessage ?? "error")
+                return
+            }
+            self?.employeeStatusButton.setTitle((body.isOnSite ?? false) ? " \(body.siteName ?? "")" : " Not in site", for: .normal)
+            self?.employeeStatusButton.setImage(UIImage(named: (body.isOnSite ?? false) ? "availableIcon-1" : "unavilableIcon"), for: .normal)
+        }
+    }
+
     func checkOut(){
         Provider().postRequest(url: "http://ec2-3-234-225-67.compute-1.amazonaws.com:8080/attendance/checkStatus", withExpectedResponseOfType: CheckInResponseData.self, headers: ["Authorization": "Bearer " + (Constants.loginToken ?? "") ?? ""], parameters: ["longitude": lng, "latitude": lat, "actionTypeId": 2, "logAction": true]) {[weak self] data in
             guard let body = data?.body else {
@@ -80,6 +96,7 @@ struct CheckInResponseData: Codable{
 }
 struct CheckInResponseDataBody: Codable{
     let isOnSite: Bool?
+    let siteName: String?
 }
 
 struct AttendanceLogsResponseData: Codable{
